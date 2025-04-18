@@ -2,11 +2,19 @@ from flask import Flask, request, jsonify
 from module import analyze_resume, extract_text_from_file
 import tempfile
 import os
+# import spacy
+
+# try:
+#     nlp = spacy.load("en_core_web_md")
+# except:
+#     import spacy.cli
+#     spacy.cli.download("en_core_web_md")
+#     nlp = spacy.load("en_core_web_md")
 import spacy
 
 try:
     nlp = spacy.load("en_core_web_md")
-except:
+except OSError:
     import spacy.cli
     spacy.cli.download("en_core_web_md")
     nlp = spacy.load("en_core_web_md")
